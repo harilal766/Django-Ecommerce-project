@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<!--image-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 mt-3">
+            <img src="{{p.image.url}}" style="height:auto; width:300px;" alt="{{p.image.url}}">
+        </div>
+        <div class="col-sm-8 mt-3 ">
+            <h2>{{p.name}}</h2>
+            <h3>₹ {{p.price}}</h3>
+            <p>{{p.description}}</p>
+<!--stock-->
+            {% if p.stock <= 0 %}
+            <h2>OUT OF STOCK</h2>
+            {% else %}
+            <a href="{% url 'cart:add_cart' p.id %}" class="btn btn-primary">Add to cart</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
