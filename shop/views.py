@@ -11,12 +11,12 @@ from django.contrib import messages
 # Create your views here.
 
 def home(request):
-    return render(request,'category.html')
+    return render(request,'index.html')
 
 def category(request):
     p=Category.objects.all()
     print(p)
-    return render(request,'category.html',{'c':p})
+    return render(request,'index.html',{'c':p})
 
 def products(request,cslug):
     p=Product.objects.filter(category__slug=cslug)

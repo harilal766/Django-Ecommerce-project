@@ -76,7 +76,7 @@ def order(request):
         ##amount verification
         account=Account.objects.get(acc_number=ac)
         if float(account.amount) >= total:
-            account.amount=account.amount-total
+            account.amount = account.amount-total
             account.save()
             ## deleting from cart after placing order
             for i in cart:
