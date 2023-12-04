@@ -20,7 +20,7 @@ urlpatterns = [
     path('usersignout', views.usersignout, name='usersignout'),
 ]
 
-
+# Authorization
 from rest_framework.authtoken import views
 urlpatterns += [
     path('api-token-auth/', views.obtain_auth_token)

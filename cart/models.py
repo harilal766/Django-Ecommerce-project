@@ -36,7 +36,3 @@ class Order(models.Model):
 
     def subtotal1(self):
         return self.no_ofitems * self.products.price
-
-
-
-
