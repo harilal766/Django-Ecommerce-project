@@ -7,21 +7,35 @@ from django.contrib.auth.models import User # reg
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
+import requests
 
 # Create your views here.
 
+response = requests.get("https://dummyjson.com/products")
+prod_data = response.json()
 def home(request):
-    return render(request,'index.html')
+    category=Category.objects.all()
+    avail_cat = set()
+    for i in prod_data['products']:
+        avail_cat.add(i['category'])
+    return render(request,'category.html',{'category':category,"avail_cat":avail_cat})
 
 def category(request):
     p=Category.objects.all()
     print(p)
-    return render(request,'index.html',{'c':p})
+    return render(request,'category.html',{'c':p})
 
 def products(request,cslug):
     p=Product.objects.filter(category__slug=cslug)
     c=Category.objects.get(slug=cslug)
     return render(request,'product.html',{'p':p,'c':c})
+def categoryAPI(request):
+    category=prod_data['products']
+    return render(request,'categoryAPI.html',{'c':category})
+def productsAPI(request,cslug):
+    c=Category.objects.get(slug=cslug)
+    p=Product.objects.filter(category__slug=cslug)
+    return render(request,'productAPI.html',{'p':p,'c':c})
 
 def prodetail(request,pslug):
     p=Product.objects.get(slug=pslug)

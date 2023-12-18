@@ -1,0 +1,32 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <img class="cropped" src="{% static 'img/pxfuel.jpg'%}" >
+    <!--    centered heading-->
+    <center><h1 class="text-center" style="font-family:arial;">Our product categories</h1>
+        <!--    description-->
+        <p class="text-justify">There are many4 variations of passages of Lorem Ipsum available,
+            but the majority have suffered alteration in some form, by injected humour, or randomised
+            words which don't look even slightly believable.</p>
+    </center>
+
+</div>
+<!--    category card display -->
+<div class="container-fluid">
+    <div class="row mx-auto">
+        {% for i in c %}
+        <div class="col-sm-3 card_crop" style="margin:10px;">
+            <div class="card" style="width: 18rem;">
+              <img src="{{i.image.url}}" style="height:auto; width:auto;" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="font-weight:bold;">{{i.name}}</h5>
+                <p class="card-text">{{i.description}}</p>
+                <a href="{% url 'shop:products' i.slug %}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

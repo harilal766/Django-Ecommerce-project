@@ -2,9 +2,9 @@
 {% load static %}
 {% block content %}
 <div class="container-fluid">
-    <img class="cropped" src="{{c.banner.url}}">
+    <img src="{% static 'img/pxfuel.jpg'%}" style="width:100%; height:auto;">
     <!--    centered heading-->
-    <center><h1 class="text-center" style="font-family:arial;">product category : {{c.name}}</h1>
+    <center><h1 class="text-center" style="font-family:arial;">Our product categories</h1>
         <!--    description-->
         <p class="text-justify">There are many4 variations of passages of Lorem Ipsum available,
             but the majority have suffered alteration in some form, by injected humour, or randomised
@@ -12,25 +12,22 @@
     </center>
 
 </div>
-<!--    product card display -->
+<!--    category card display -->
 <div class="container-fluid">
 <div class="row mx-auto">
-    {% for i in p %}
+    {% for i in c %}
     <div class="col-sm-3">
         <div class="card" style="width: 18rem;">
-          <img src="{{i.image.url}}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title" style="font-weight:bold;">{{i.name}}</h5>
-            <p class="card-text">{{i.description}}</p>
-            <a href="{% url 'shop:prodetail' i.slug %}" class="btn btn-primary">Details</a>
-          </div>
+  <img src="{{i.images.url}}" style="height:250px; width:auto;" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title" style="font-weight:bold;">{{i.category}}</h5>
+    <p class="card-text">{{i.description}}</p>
+    <a href="#" class="btn btn-primary">View</a>
+  </div>
         </div>
     </div>
-    {% endfor %}
-
-
-
-
+{% endfor %}
 </div>
+
 </div>
 {% endblock %}

@@ -11,6 +11,7 @@ urlpatterns = [
     path('api/',include(router.urls)), #api
 
     path('',views.home,name='home'),
+    # path('category',views.categoryAPI,name='category'),
     path('category',views.category,name='category'),
     path('products/<slug:cslug>',views.products,name='products'),
     path('prodetail/<slug:pslug>',views.prodetail,name='prodetail'),

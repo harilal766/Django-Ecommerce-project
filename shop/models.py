@@ -6,6 +6,8 @@ class Category(models.Model):
     slug = models.SlugField(max_length=250, unique=True)
     description = models.TextField(blank=True)
     image = models.FileField(upload_to='shop/category',null=True,blank=True)
+    banner = models.FileField(upload_to='shop/category',null=True,blank=True)
+
 
     def __str__(self):
         return self.name #to display category name instead of object number
