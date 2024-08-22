@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-lps)*l@@p*5lzm7d8h@28k_z@h^wqdq3-s8s9gu04lc+a8g###
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'django-ecommerce-project-production.up.railway.app',
     ]
 
@@ -140,8 +141,8 @@ USE_TZ = True
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles"),
-STATICFILES_DIRS = [ os.path.join(BASE_DIR,"static"),]
+STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
+STATICFILES_DIRS = [ os.path.join(BASE_DIR,"static")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
